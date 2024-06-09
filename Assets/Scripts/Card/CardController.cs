@@ -31,8 +31,8 @@ namespace RPSCardStack.CardSystem
         public bool IsDragged { get => _isDragged; set => _isDragged = value; }
         [SerializeField] [ReadOnly] protected bool _isStacked;
         public bool IsStacked { get => _isStacked; set => _isStacked = value; }
-        [SerializeField] [ReadOnly] protected bool _canBeStacked;
-        public bool CanBeStacked { get => _canBeStacked; set => _canBeStacked = value; }
+        /*[SerializeField] [ReadOnly] protected bool _canBeStacked;
+        public bool CanBeStacked { get => _canBeStacked; set => _canBeStacked = value; }*/
         [SerializeField] [ReadOnly] protected CardController _stackedOnCard;
         public CardController StackedOnCard { get => _stackedOnCard; private set => _stackedOnCard = value; }
 
@@ -75,7 +75,7 @@ namespace RPSCardStack.CardSystem
             _cardSortingGroup = GetComponent<SortingGroup>();
             CanBeDragged = true;
             IsStacked = false;
-            CanBeStacked = true;
+            /*CanBeStacked = true;*/
         }
 
         protected void Start()
@@ -135,25 +135,31 @@ namespace RPSCardStack.CardSystem
             List<Collider2D> overlapColliders = new List<Collider2D>();
             Physics2D.OverlapCollider(_cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
 
-            if (overlapColliders.Count <= 0)
+            List<CardController> overlapCardController = new List<CardController>();
+            foreach(Collider2D overlapCollider in overlapColliders)
+            {
+                if (overlapCollider.TryGetComponent(out CardController cardController))
+                {
+                    if (!cardController.IsDragged)
+                    {
+                        overlapCardController.Add(cardController);
+                    }
+                }
+            }
+
+            if (overlapCardController.Count <= 0)
             {
                 ToggleDragSorting(false);
                 StackWithCard(null);
             }
             else
             {
-                foreach (Collider2D overlapCollider in overlapColliders)
+                foreach (CardController cardController in overlapCardController)
                 {
-                    if (overlapCollider.TryGetComponent(out CardController cardController))
+                    if (cardController.AllowedToStack(this))
                     {
-                        if (!cardController.IsDragged)
-                        {
-                            if (cardController.AllowedToStack(this))
-                            {
-                                StackWithCard(cardController);
-                                return;
-                            }
-                        }
+                        StackWithCard(cardController);
+                        return;
                     }
                 }
 
@@ -164,15 +170,21 @@ namespace RPSCardStack.CardSystem
 
         protected void StackWithCard(CardController cardToStackTo)
         {
+            if (StackedOnCard != null)
+            {
+                if (cardToStackTo == StackedOnCard)
+                {
+                    return;
+                }
+
+                StackedOnCard.CardPositionDragged -= HandleCardStackPos;
+                StackedOnCard.CardSortingDragged -= HandleCardStackSort;
+                StackedOnCard.IsStacked = false;
+                StackedOnCard = null;
+            }
+            
             if (cardToStackTo == null)
             {
-                if (StackedOnCard != null)
-                {
-                    StackedOnCard.CardPositionDragged -= HandleCardStackPos;
-                    StackedOnCard.CardSortingDragged -= HandleCardStackSort;
-                    StackedOnCard.IsStacked = false;
-                    StackedOnCard = null;
-                }
                 ToggleDragSorting(false);
             }
             else
@@ -206,6 +218,7 @@ namespace RPSCardStack.CardSystem
             }
 
             ToggleDragSorting(isDragged, sortingOrder + 1);
+            HandleCardStackPos();
         }
     }
 }
