@@ -246,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4717793466963066825, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: m_Name
-      value: Card (1)
+      value: Beta
       objectReference: {fileID: 0}
     - target: {fileID: 8677807409263969765, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4717793466963066825, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: m_Name
-      value: Card (2)
+      value: Gamma
       objectReference: {fileID: 0}
     - target: {fileID: 8677807409263969765, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -442,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4717793466963066825, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: m_Name
-      value: Card
+      value: Alpha
       objectReference: {fileID: 0}
     - target: {fileID: 8677807409263969765, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: m_LocalPosition.x

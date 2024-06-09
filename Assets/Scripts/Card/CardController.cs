@@ -87,7 +87,7 @@ namespace RPSCardStack.CardSystem
 
         public bool AllowedToStack(CardController cardToStack)
         {
-            return (CanBeStacked);
+            return (!IsStacked);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -170,19 +170,20 @@ namespace RPSCardStack.CardSystem
                 {
                     StackedOnCard.CardPositionDragged -= HandleCardStackPos;
                     StackedOnCard.CardSortingDragged -= HandleCardStackSort;
+                    StackedOnCard.IsStacked = false;
                     StackedOnCard = null;
                 }
                 ToggleDragSorting(false);
-                _isStacked = false;
             }
             else
             {
                 StackedOnCard = cardToStackTo;
+                StackedOnCard.IsStacked = true;
                 StackedOnCard.CardPositionDragged += HandleCardStackPos;
                 StackedOnCard.CardSortingDragged += HandleCardStackSort;
                 transform.position = StackedOnCard.StackPoint.position;
                 ToggleDragSorting(false, cardToStackTo.ZOrder + 1);
-                _isStacked = true;
+                Debug.Log($"{gameObject.name} Stack with {cardToStackTo.gameObject.name}");
             }
         }
 
