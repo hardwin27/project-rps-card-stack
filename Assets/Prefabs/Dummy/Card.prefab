@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8677807409263969765}
   - component: {fileID: 2076615940202838229}
-  - component: {fileID: 7805151005867153086}
   - component: {fileID: 1352973005808945626}
-  - component: {fileID: 3378312201535161608}
-  - component: {fileID: 9182988440631943416}
   - component: {fileID: 486591470885695159}
+  - component: {fileID: 8170509949948577878}
+  - component: {fileID: 1928809535808090592}
+  - component: {fileID: 6633580361364041814}
+  - component: {fileID: 1977414111074229893}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -91,25 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7805151005867153086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4717793466963066825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133a25b7d503a08489819551383606c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stackPoint: {fileID: 3930049436386964377}
-  _canBeDragged: 0
-  _isStacked: 0
-  _canBeStacked: 0
-  _stackedOnCard: {fileID: 0}
-  _cardDefaultSortName: Card
-  _cardDraggedSortName: DraggedCard
 --- !u!61 &1352973005808945626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,32 +137,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3378312201535161608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4717793466963066825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc33cc141fb94ae4cb75e0522d100008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardName: 
---- !u!114 &9182988440631943416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4717793466963066825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85e2e08ef0112734d8cb6e9ddbe58ff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardNameTextUi: {fileID: 5321636112360786665}
 --- !u!210 &486591470885695159
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -193,6 +149,64 @@ SortingGroup:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &8170509949948577878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717793466963066825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133a25b7d503a08489819551383606c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stackPoint: {fileID: 3930049436386964377}
+  _canBeDragged: 0
+  _isDragged: 0
+  _isStacked: 0
+  _stackedOnCard: {fileID: 0}
+  _cardDefaultSortName: Card
+  _cardDraggedSortName: DraggedCard
+--- !u!114 &1928809535808090592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717793466963066825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc33cc141fb94ae4cb75e0522d100008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardName: 
+--- !u!114 &6633580361364041814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717793466963066825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e2e08ef0112734d8cb6e9ddbe58ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardNameTextUi: {fileID: 5321636112360786665}
+--- !u!114 &1977414111074229893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717793466963066825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4639f927d75ce5542889b6c3a625e17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardController: {fileID: 8170509949948577878}
 --- !u!1 &8284893691013140955
 GameObject:
   m_ObjectHideFlags: 0

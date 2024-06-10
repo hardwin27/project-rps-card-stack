@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &487008971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487008972}
+  - component: {fileID: 487008973}
+  m_Layer: 0
+  m_Name: System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487008972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487008971}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487008973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487008971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5bdaaebe8d3ce42897706d69cffa63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +284,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1928809535808090592, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
+      propertyPath: _cardName
+      value: Beta
+      objectReference: {fileID: 0}
     - target: {fileID: 3378312201535161608, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: _cardName
       value: Beta
@@ -304,6 +352,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1928809535808090592, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
+      propertyPath: _cardName
+      value: Gamma
+      objectReference: {fileID: 0}
     - target: {fileID: 3378312201535161608, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: _cardName
       value: Gamma
@@ -481,6 +533,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1928809535808090592, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
+      propertyPath: _cardName
+      value: Alpha
+      objectReference: {fileID: 0}
     - target: {fileID: 3378312201535161608, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       propertyPath: _cardName
       value: Alpha
@@ -547,3 +603,4 @@ SceneRoots:
   - {fileID: 918277862}
   - {fileID: 1074293218}
   - {fileID: 1468030415}
+  - {fileID: 487008972}

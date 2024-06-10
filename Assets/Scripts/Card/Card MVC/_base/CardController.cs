@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,16 +11,29 @@ using RPSCardStack.DraggableSystem;
 
 namespace RPSCardStack.CardSystem
 {
-    [RequireComponent(typeof(CardModel))]
-    [RequireComponent(typeof(CardView))]
+    [RequireComponent(typeof(ICardModel), typeof(ICardView))]
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(SortingGroup))]
 
-    public class CardController : MonoBehaviour, IDraggable
+    public abstract class CardController : MonoBehaviour, IDraggable, ICardController
     {
-        protected CardModel _cardModel;
-        protected CardView _cardView;
+        protected ICardModel _cardModel;
+        protected ICardView _cardView;
+        protected ICardData _cardData;
         protected Collider2D _cardCollider;
+        public string CardName
+        {
+            get
+            {
+                if (_cardModel != null)
+                {
+                    return _cardModel.CardName;
+                }
+
+                return "";
+            }
+        }
+        
         protected SortingGroup _cardSortingGroup;
 
         [SerializeField] protected Transform _stackPoint;
@@ -31,18 +45,17 @@ namespace RPSCardStack.CardSystem
         public bool IsDragged { get => _isDragged; set => _isDragged = value; }
         [SerializeField] [ReadOnly] protected bool _isStacked;
         public bool IsStacked { get => _isStacked; set => _isStacked = value; }
-        /*[SerializeField] [ReadOnly] protected bool _canBeStacked;
-        public bool CanBeStacked { get => _canBeStacked; set => _canBeStacked = value; }*/
         [SerializeField] [ReadOnly] protected CardController _stackedOnCard;
         public CardController StackedOnCard { get => _stackedOnCard; private set => _stackedOnCard = value; }
 
         protected Vector3 _lastPos;
 
-        [SerializeField] private string _cardDefaultSortName;
-        [SerializeField] private string _cardDraggedSortName;
+        [SerializeField] protected string _cardDefaultSortName;
+        [SerializeField] protected string _cardDraggedSortName;
 
-        public delegate void CardDragPositionEvent();
-        public event CardDragPositionEvent CardPositionDragged;
+        public delegate void CardVoidEvent();
+        public event CardVoidEvent CardPositionDragged;
+        public event CardVoidEvent CardStacked;
 
         public delegate void CardDragSortEvent(bool isDragged, int sortingOrder);
         public event CardDragSortEvent CardSortingDragged;
@@ -69,26 +82,25 @@ namespace RPSCardStack.CardSystem
 
         protected void Awake()
         {
-            _cardModel = GetComponent<CardModel>();
-            _cardView = GetComponent<CardView>();
+            _cardModel = GetComponent<ICardModel>();
+            _cardView = GetComponent<ICardView>();
             _cardCollider = GetComponent<Collider2D>();
             _cardSortingGroup = GetComponent<SortingGroup>();
             CanBeDragged = true;
-            IsStacked = false;
-            /*CanBeStacked = true;*/
+            IsStacked = false; 
         }
 
-        protected void Start()
+        protected virtual void Start()
         {
             _lastPos = transform.position;
-            _cardView.UpdateCardName(_cardModel.CardName);
             HandleDragEnd();
         }
 
-        public bool AllowedToStack(CardController cardToStack)
-        {
-            return (!IsStacked);
-        }
+        protected abstract void UpdateModel();
+
+        protected abstract void UpdateView();
+
+        #region Card Drag Mechanic
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -113,6 +125,11 @@ namespace RPSCardStack.CardSystem
             HandleDragEnd();
         }
 
+        public bool AllowedToStack(CardController cardToStack)
+        {
+            return (!IsStacked);
+        }
+
         protected void SetDraggerPos(PointerEventData eventData)
         {
             Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
@@ -123,20 +140,18 @@ namespace RPSCardStack.CardSystem
         protected void ToggleDragSorting(bool isDragged, int sortingOrder = 0)
         {
             IsDragged = isDragged;
-            _cardSortingGroup.sortingLayerName = (isDragged) ? _cardDraggedSortName: _cardDefaultSortName;
+            _cardSortingGroup.sortingLayerName = (isDragged) ? _cardDraggedSortName : _cardDefaultSortName;
             ZOrder = sortingOrder;
             CardSortingDragged?.Invoke(isDragged, sortingOrder);
         }
 
         protected void HandleDragEnd()
         {
-            Debug.Log($"{_cardModel.CardName} DRAG END");
-
             List<Collider2D> overlapColliders = new List<Collider2D>();
             Physics2D.OverlapCollider(_cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
 
             List<CardController> overlapCardController = new List<CardController>();
-            foreach(Collider2D overlapCollider in overlapColliders)
+            foreach (Collider2D overlapCollider in overlapColliders)
             {
                 if (overlapCollider.TryGetComponent(out CardController cardController))
                 {
@@ -167,7 +182,7 @@ namespace RPSCardStack.CardSystem
                 ToggleDragSorting(false);
             }
         }
-
+        
         protected void StackWithCard(CardController cardToStackTo)
         {
             if (StackedOnCard != null)
@@ -182,7 +197,7 @@ namespace RPSCardStack.CardSystem
                 StackedOnCard.IsStacked = false;
                 StackedOnCard = null;
             }
-            
+
             if (cardToStackTo == null)
             {
                 ToggleDragSorting(false);
@@ -195,7 +210,7 @@ namespace RPSCardStack.CardSystem
                 StackedOnCard.CardSortingDragged += HandleCardStackSort;
                 transform.position = StackedOnCard.StackPoint.position;
                 ToggleDragSorting(false, cardToStackTo.ZOrder + 1);
-                Debug.Log($"{gameObject.name} Stack with {cardToStackTo.gameObject.name}");
+                CardStacked?.Invoke();
             }
         }
 
@@ -220,5 +235,6 @@ namespace RPSCardStack.CardSystem
             ToggleDragSorting(isDragged, sortingOrder + 1);
             HandleCardStackPos();
         }
+        #endregion
     }
 }

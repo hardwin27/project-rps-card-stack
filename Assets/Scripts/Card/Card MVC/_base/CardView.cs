@@ -5,11 +5,11 @@ using TMPro;
 
 namespace RPSCardStack.CardSystem
 {
-    public class CardView : MonoBehaviour
+    public class CardView : MonoBehaviour, ICardView
     {
-        [SerializeField] private TextMeshPro _cardNameTextUi;
+        [SerializeField] protected TextMeshPro _cardNameTextUi;
 
-        public void UpdateCardName(string name)
+        public void UpdateBaseDisplay(string name, Sprite sprite)
         {
             if (_cardNameTextUi == null)
             {
