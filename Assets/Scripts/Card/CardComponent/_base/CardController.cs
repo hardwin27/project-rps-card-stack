@@ -17,8 +17,6 @@ namespace RPSCardStack.CardSystem
     [RequireComponent(typeof(ICardModel), typeof(ICardView))]
     public class CardController : MonoBehaviour, IDraggable, ICardController
     {
-        [SerializeField] private CardData _initialCardData;
-        
         protected ICardModel _cardModel;
         protected ICardView _cardView;
         
@@ -100,11 +98,6 @@ namespace RPSCardStack.CardSystem
         {
             _lastPos = transform.position;
             HandleDragEnd();
-
-            if (_initialCardData != null)
-            {
-                SetCardData(_initialCardData);
-            }
         }
 
         public void SetCardData(ICardData cardData)

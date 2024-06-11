@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardName: Beta
   _cardSprite: {fileID: 0}
-  _coinValue: 1
+  _coinValue: 3

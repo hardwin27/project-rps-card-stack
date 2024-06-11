@@ -11,11 +11,10 @@ namespace RPSCardStack.CardSystem
 
         public void UpdateValuableDisplay(int value)
         {
-            if (_coinValueText != null)
+            if (_coinValueText == null)
             {
                 return;
             }
-
             _coinValueText.text = value.ToString();
         }
     }

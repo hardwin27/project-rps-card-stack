@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardDataAssigner : MonoBehaviour
+namespace RPSCardStack.CardSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(CardController))]
+    public class CardDataAssigner : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private CardData _cardData;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private CardController _cardController;
+
+        private void Awake()
+        {
+            _cardController = GetComponent<CardController>();
+        }
+
+        private void Start()
+        {
+            if (_cardData != null)
+            {
+                _cardController.SetCardData(_cardData);
+            }
+        }
     }
 }

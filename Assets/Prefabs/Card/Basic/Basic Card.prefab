@@ -69,6 +69,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4717793466963066825, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 908634201973540267}
+    - targetCorrespondingSourceObject: {fileID: 4717793466963066825, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4690130259589824016}
   m_SourcePrefab: {fileID: 100100000, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
 --- !u!4 &2622182985204866797 stripped
 Transform:
@@ -119,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133a25b7d503a08489819551383606c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialCardData: {fileID: 0}
   _stackPoint: {fileID: 2622182985204866797}
   _canBeDragged: 0
   _isDragged: 0
@@ -127,6 +129,19 @@ MonoBehaviour:
   _stackedOnCard: {fileID: 0}
   _cardDefaultSortName: Card
   _cardDraggedSortName: DraggedCard
+--- !u!114 &4690130259589824016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021720081276981949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedcac7f22b72a044b012fdce0cc0ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardData: {fileID: 0}
 --- !u!114 &6571795785472796573 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5321636112360786665, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}

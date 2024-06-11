@@ -245,6 +245,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4717793466963066825, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4176691576376958464}
+    - targetCorrespondingSourceObject: {fileID: 4717793466963066825, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6556766185077446720}
   m_SourcePrefab: {fileID: 100100000, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}
 --- !u!4 &1814377382435054418 stripped
 Transform:
@@ -297,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62a1242da68b304d8ce311d8bc4c7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialCardData: {fileID: 0}
   _stackPoint: {fileID: 6325976802048365870}
   _canBeDragged: 0
   _isDragged: 0
@@ -305,7 +307,19 @@ MonoBehaviour:
   _stackedOnCard: {fileID: 0}
   _cardDefaultSortName: Card
   _cardDraggedSortName: DraggedCard
-  _initialResourceCardData: {fileID: 0}
+--- !u!114 &6556766185077446720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2321831458145573246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f9c14b0a203a741a100d5fd5740900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceCardData: {fileID: 0}
 --- !u!114 &2925662556012031070 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5321636112360786665, guid: 989d1e2f6cd0ac64ebe32cfaaea4deb1, type: 3}

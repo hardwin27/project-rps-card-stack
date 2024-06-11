@@ -7,8 +7,6 @@ namespace RPSCardStack.CardSystem
     [RequireComponent(typeof(IValuableModel), typeof(IValuableView))]
     public class ResourceCardController : CardController, IValuableController
     {
-        [SerializeField] private ResourceCardData _initialResourceCardData;
-
         protected IValuableModel _valuableModel;
         protected IValuableView _valuableView;
 
@@ -34,11 +32,6 @@ namespace RPSCardStack.CardSystem
         protected override void Start()
         {
             base.Start();
-
-            if (_initialResourceCardData != null)
-            {
-                SetResourcCardeData(_initialResourceCardData);
-            }
         }
 
         public void SetResourcCardeData(ResourceCardData resourceCardData)
