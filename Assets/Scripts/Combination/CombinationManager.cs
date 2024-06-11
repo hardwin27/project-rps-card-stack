@@ -22,5 +22,10 @@ namespace RPSCardStack.CombinationSystem
 
             Debug.Log($"{stackMessage}");
         }
+
+        public void CheckUnstack(CardController cardController)
+        {
+
+        }
     }
 }

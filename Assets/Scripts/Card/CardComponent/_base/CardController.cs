@@ -58,6 +58,7 @@ namespace RPSCardStack.CardSystem
         public delegate void CardVoidEvent();
         public event CardVoidEvent CardPositionDragged;
         public event CardVoidEvent CardStacked;
+        public event CardVoidEvent CardUnstacked;
 
         public delegate void CardDragSortEvent(bool isDragged, int sortingOrder);
         public event CardDragSortEvent CardSortingDragged;
@@ -201,6 +202,7 @@ namespace RPSCardStack.CardSystem
                 StackedOnCard.CardPositionDragged -= HandleCardStackPos;
                 StackedOnCard.CardSortingDragged -= HandleCardStackSort;
                 StackedOnCard.IsStacked = false;
+                StackedOnCard.CardUnstacked?.Invoke();
                 StackedOnCard = null;
             }
 

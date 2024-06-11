@@ -36,5 +36,10 @@ namespace RPSCardStack.CombinationSystem
         {
             _combinationManager.CheckStack(_cardController);
         }
+
+        private void HandleCardUnstacked()
+        {
+            
+        }
     }
 }
