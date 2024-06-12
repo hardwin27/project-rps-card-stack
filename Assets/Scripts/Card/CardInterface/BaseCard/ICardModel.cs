@@ -6,9 +6,8 @@ namespace RPSCardStack.CardSystem
 {
     public interface ICardModel
     {
-        public string CardName { get; }
-        public Sprite CardSprite { get; }
+        public CardData CardData { get; }
 
-        public void InitiateCardData(ICardData cardData);
+        public void InitiateCardData(CardData cardData);
     }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bbcf5c39c1c96146b716ed98a7db39e, type: 3}
+  m_Name: CoinFarmGeneratorData
+  m_EditorClassIdentifier: 
+  _cardName: Coin Farm
+  _cardSprite: {fileID: 0}
+  _reqType: 0
+  _combinationFormula:
+  - {fileID: 11400000, guid: 57cd79ed6a7568a4eb5568a124d368e5, type: 2}
+  - {fileID: 11400000, guid: ca47d3d68e699384889d51fd6dfab69d, type: 2}
+  - {fileID: 11400000, guid: 35e3adc6185528a4fbefb21a9ca6309c, type: 2}
+  _coinValue: 3

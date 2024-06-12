@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 310c6726d42381a4fad58c8fb6e5b6f0, type: 3}
-  m_Name: BetaResourceData
+  m_Script: {fileID: 11500000, guid: 61b077d84e81f4446827faea1343c566, type: 3}
+  m_Name: ScissorsAgentData
   m_EditorClassIdentifier: 
-  _cardName: Beta
+  _cardName: Scissors
   _cardSprite: {fileID: 0}
-  _coinValue: 3
+  _reqType: 1
+  _combinationFormulas: []

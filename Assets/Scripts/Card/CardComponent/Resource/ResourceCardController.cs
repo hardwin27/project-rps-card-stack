@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace RPSCardStack.CardSystem
 {
-    [RequireComponent(typeof(IValuableModel), typeof(IValuableView))]
+    [RequireComponent(typeof(ResourceCardModel), typeof(ResourceCardView))]
     public class ResourceCardController : CardController, IValuableController
     {
-        protected IValuableModel _valuableModel;
-        protected IValuableView _valuableView;
+        private ResourceCardModel _resourceCardModel;
+        private ResourceCardView _resourceCardView;
 
         public int CoinValue
         {
             get
             {
-                if (_valuableModel != null)
+                if (_resourceCardModel != null)
                 {
-                    return _valuableModel.CoinValue;
+                    return _resourceCardModel.CoinValue;
                 }
                 return 0;
             }
@@ -25,8 +25,8 @@ namespace RPSCardStack.CardSystem
         protected override void Awake()
         {
             base.Awake();
-            _valuableModel = GetComponent<IValuableModel>();
-            _valuableView = GetComponent<IValuableView>();
+            _resourceCardModel = GetComponent<ResourceCardModel>();
+            _resourceCardView = GetComponent<ResourceCardView>();
         }
 
         protected override void Start()
@@ -42,8 +42,8 @@ namespace RPSCardStack.CardSystem
 
         public void SetValuableData(IValuableData valuableData)
         {
-            _valuableModel.InitiateValuableData(valuableData);
-            _valuableView.UpdateValuableDisplay(_valuableModel.CoinValue);
+            _resourceCardModel.InitiateValuableData(valuableData);
+            _resourceCardView.UpdateValuableDisplay(_resourceCardModel.CoinValue);
         }
     }
 }

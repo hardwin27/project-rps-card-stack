@@ -9,17 +9,12 @@ namespace RPSCardStack.CardSystem
     public class CardModel : MonoBehaviour, ICardModel
     {
         [Header("Card Data")]
-        [SerializeField] [ReadOnly] private string _cardName;
-        [SerializeField] [ReadOnly] private Sprite _cardSprite;
-        
-        public virtual string CardName { get => _cardName; }
+        protected CardData _cardData;
+        public CardData CardData { get => _cardData; }
 
-        public virtual Sprite CardSprite { get => _cardSprite; }
-
-        public void InitiateCardData(ICardData cardData)
+        public void InitiateCardData(CardData cardData)
         {
-            _cardName = cardData.CardName;
-            _cardSprite = cardData.CardSprite;
+            _cardData = cardData;
         }
     }
 }

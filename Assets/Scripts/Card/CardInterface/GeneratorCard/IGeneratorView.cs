@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace RPSCardStack.CardSystem
 {
-    public interface IGeneratorController
+    public interface IGeneratorView
     {
-        
+        public void UpdateGeneratorDisplay();
     }
 }

@@ -8,8 +8,8 @@ namespace RPSCardStack.CardSystem
 {
     public interface ICardController
     {
-        public string CardName { get; }
+        public CardData CardData { get; }
 
-        public void SetCardData(ICardData cardData);
+        public void SetCardData(CardData cardData);
     }
 }

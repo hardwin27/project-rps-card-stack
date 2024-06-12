@@ -14,26 +14,24 @@ namespace RPSCardStack.CardSystem
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(SortingGroup))]
 
-    [RequireComponent(typeof(ICardModel), typeof(ICardView))]
+    [RequireComponent(typeof(CardModel), typeof(CardView))]
     public class CardController : MonoBehaviour, IDraggable, ICardController
     {
-        protected ICardModel _cardModel;
-        protected ICardView _cardView;
+        private CardModel _cardModel;
+        private CardView _cardView;
         
-        public string CardName
+        public CardData CardData
         {
             get
             {
                 if (_cardModel != null)
                 {
-                    return _cardModel.CardName;
+                    return _cardModel.CardData;
                 }
 
-                return "";
+                return null;
             }
         }
-
-        protected ICardData _cardData;
 
         protected Collider2D _cardCollider;
         protected SortingGroup _cardSortingGroup;
@@ -87,8 +85,8 @@ namespace RPSCardStack.CardSystem
 
         protected virtual void Awake()
         {
-            _cardModel = GetComponent<ICardModel>();
-            _cardView = GetComponent<ICardView>();
+            _cardModel = GetComponent<CardModel>();
+            _cardView = GetComponent<CardView>();
             _cardCollider = GetComponent<Collider2D>();
             _cardSortingGroup = GetComponent<SortingGroup>();
             CanBeDragged = true;
@@ -101,10 +99,10 @@ namespace RPSCardStack.CardSystem
             HandleDragEnd();
         }
 
-        public void SetCardData(ICardData cardData)
+        public void SetCardData(CardData cardData)
         {
             _cardModel.InitiateCardData(cardData);
-            _cardView.UpdateBaseDisplay(_cardModel.CardName, _cardModel.CardSprite);
+            _cardView.UpdateBaseDisplay(CardData.CardName, cardData.CardSprite);
         }
 
         #region Card Drag Mechanic

@@ -21,6 +21,7 @@ namespace RPSCardStack.CombinationSystem
             if (_cardController != null)
             {
                 _cardController.CardStacked += HandleCardStacked;
+                _cardController.CardUnstacked += HandleCardUnstacked;
             }
         }
 
@@ -29,6 +30,7 @@ namespace RPSCardStack.CombinationSystem
             if (_cardController != null)
             {
                 _cardController.CardStacked -= HandleCardStacked;
+                _cardController.CardUnstacked -= HandleCardUnstacked;
             }
         }
 
@@ -39,7 +41,7 @@ namespace RPSCardStack.CombinationSystem
 
         private void HandleCardUnstacked()
         {
-            
+            _combinationManager.CheckUnstack(_cardController);
         }
     }
 }
