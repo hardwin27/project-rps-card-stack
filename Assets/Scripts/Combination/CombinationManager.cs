@@ -63,7 +63,7 @@ namespace RPSCardStack.CombinationSystem
                 {
                     if (cardStack.Count - cardInd >= formulaData.RequiredCards.Count)
                     {
-                        List<int> tempIndexs = FindCombinationIgnoreOrder(formulaData.RequiredCards, cardStack.GetRange(cardInd, cardStack.Count));
+                        List<int> tempIndexs = FindCombinationIgnoreOrder(formulaData.RequiredCards, cardStack.GetRange(cardInd, cardStack.Count - cardInd));
                         if (tempIndexs.Count > 0)
                         {
                             Debug.Log($"{formulaData.ResultCard.CardName} from {formulaData.name} Can be Create");
